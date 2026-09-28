@@ -3,7 +3,7 @@ from openai import OpenAI
 
 client = OpenAI(
     api_key=os.environ["API_KEY"],
-    base_url="https://archlens-resource.services.ai.azure.com/api/projects/archlens/openai/vl/responses"
+    base_url="https://archlens-resource.services.ai.azure.com/api/projects/archlens/openai/v1"
 )
 
 try:
