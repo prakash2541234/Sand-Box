@@ -1,17 +1,21 @@
+import os
 from openai import OpenAI
 
 client = OpenAI(
-    api_key="F8VkmgeONJhiXEPMnhKAHtoSIvCoHXrxiA0uC35kULZIzmtjs2TEJQQJ99CG AC5T7U2XJ3w3AAAAACOGT47N",
-    base_url="https://archlens-resource.services.ai.azure.com/api/projects/archlens/openai/vl/responses"
+    api_key=os.environ["AZURE_OPENAI_API_KEY"],
+    base_url="https://archlens-resource.services.ai.azure.com/api/projects/archlens/openai/v1"
 )
 
 try:
-    response = client.chat.completions.create(
+    response = client.responses.create(
         model="gpt-5.6-terra-1",
-        messages=[{"role": "user", "content": "Hello, is this working?"}],
+        input="Hello, is this working?"
     )
+
     print("Reply received:")
-    print(response.choices[0].message.content)
+    print(response.output_text)
+
 except Exception as e:
     print("An error occurred:")
+    print(type(e).__name__)
     print(e)
