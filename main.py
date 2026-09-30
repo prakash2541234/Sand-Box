@@ -32,8 +32,8 @@ def process_command(command):
     if lower_command.startswith("open "):
         app_name = command[5:].strip()
 
-        print(f"Requested application: {app_name}")
-        print("Application-opening capability will be connected later.")
+        print(f"Opening application: {app_name}")
+        print("Application control will be connected later.")
 
         return True
 
@@ -41,8 +41,8 @@ def process_command(command):
     if lower_command.startswith("type "):
         text = command[5:]
 
-        print(f"Text to type: {text}")
-        print("Typing capability will be connected later.")
+        print(f"Typing: {text}")
+        print("Typing control will be connected later.")
 
         return True
 
@@ -50,19 +50,19 @@ def process_command(command):
     if lower_command.startswith("press "):
         key = command[6:].strip()
 
-        print(f"Key requested: {key}")
-        print("Keyboard-control capability will be connected later.")
+        print(f"Pressing key: {key}")
+        print("Keyboard control will be connected later.")
 
         return True
 
     # Screenshot
     if lower_command in ["screenshot", "take screenshot"]:
-        print("Screenshot requested.")
-        print("Screen-capture capability will be connected later.")
+        print("Taking screenshot...")
+        print("Screenshot capability will be connected later.")
 
         return True
 
-    # Sensitive action
+    # Send message - requires confirmation
     if lower_command.startswith("send "):
         message = command[5:]
 
@@ -72,7 +72,7 @@ def process_command(command):
 
         if confirmed:
             print("Confirmed.")
-            print("The send action would execute here.")
+            print("Send action will be connected later.")
         else:
             print("Action cancelled.")
 
