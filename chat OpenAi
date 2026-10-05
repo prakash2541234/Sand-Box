@@ -2,14 +2,14 @@ import os
 from openai import OpenAI
 
 client = OpenAI(
-    api_key=os.environ["API_KEY"],
-    base_url="https://archlens-resource.services.ai.azure.com/api/projects/archlens/openai/v1"
+    api_key=os.environ["OPENAI_API_KEY"]
 )
 
 try:
     response = client.responses.create(
-        model="gpt-5.6-terra",
-        input="Hello, is this working?"
+        model="gpt-6-luna",
+        input="Write a haiku about AI.",
+        store=True,
     )
 
     print("Reply received:")
