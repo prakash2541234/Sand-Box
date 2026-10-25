@@ -1,0 +1,27 @@
+enum ReleaseStatus {
+  planned
+  ongoing
+  done
+}
+
+type Release {
+  id: ID!
+  name: String!
+  date: String!
+  status: ReleaseStatus!
+  info: String!
+  completedSteps: [Boolean!]!
+  createdAt: String!
+  updatedAt: String!
+}
+
+type Query {
+  releases: [Release!]!
+}
+
+type Mutation {
+  createRelease(name: String!, date: String!, info: String): Release!
+  updateReleaseInfo(id: ID!, info: String!): Release!
+  setReleaseStep(id: ID!, stepIndex: Int!, completed: Boolean!): Release!
+  deleteRelease(id: ID!): Boolean!
+}
