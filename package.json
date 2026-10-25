@@ -1,0 +1,31 @@
+{
+  "name": "shipshape-release-checklist",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode demo --host 0.0.0.0",
+    "dev:api": "concurrently -k \"node --watch server/index.js\" \"vite --mode api --host 0.0.0.0\"",
+    "start": "node server/index.js",
+    "build": "vite build",
+    "test": "node --test",
+    "loadtest": "node scripts/stress.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.5.1",
+    "@as-integrations/express4": "^1.1.2",
+    "express": "^4.21.2",
+    "graphql": "^16.11.0",
+    "pg": "^8.16.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.2.1",
+    "vite": "^6.3.5"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
+  }
+}
