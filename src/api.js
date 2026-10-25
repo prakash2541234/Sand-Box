@@ -4,13 +4,14 @@ import { createDemoReleases } from "./demo-data.js";
 const DEMO_STORAGE_KEY = "shipshape-demo-releases";
 const DEMO_CHOICE_KEY = "shipshape-demo-choice";
 const demoMode = import.meta.env.VITE_DEMO_MODE === "true";
+const graphqlEndpoint = import.meta.env.VITE_GRAPHQL_ENDPOINT?.trim() || "/graphql";
 
 export function isDemoMode() {
   return demoMode;
 }
 
 async function graphqlRequest(query, variables = {}) {
-  const response = await fetch("/graphql", {
+  const response = await fetch(graphqlEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ query, variables }),
