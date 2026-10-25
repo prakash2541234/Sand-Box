@@ -15,6 +15,12 @@ Open the Vite URL printed in the terminal (usually [http://localhost:5173](http:
 
 To show the first-visit choice again, open the browser developer tools, go to **Application/Storage → Local Storage**, select this site's origin, and remove the `shipshape-demo-releases` and `shipshape-demo-choice` entries.
 
+## Deploy the frontend to Netlify
+
+The included `netlify.toml` builds the static SPA in browser-demo mode and adds a single-page-app route fallback. This lets the release checklist work without a `/graphql` function on the Netlify site; demo releases are browser-local only.
+
+For a persistent GraphQL-backed deployment, deploy the API and PostgreSQL separately, then set `VITE_DEMO_MODE=false` and `VITE_GRAPHQL_ENDPOINT` to the API's HTTPS GraphQL URL in the Netlify site's environment variables. The API host must allow browser requests from the Netlify site origin.
+
 ## Run the full stack with Docker
 
 Install Docker Desktop and start it, then from the repository root:
